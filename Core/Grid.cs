@@ -17,8 +17,7 @@ namespace Core {
 		public Grid(int nbCells, List<Coords> aliveCellsCoords) {
 			n = nbCells;
 			TabCells = new Cell[n, n];
-			for (int i = 0; i < n; i++)
-			{
+			for (int i = 0; i < n; i++) {
 				for (int j = 0; j < n; j++) {
 					Coords coords = new Coords(i, j);
 					bool state = aliveCellsCoords.Any(x => x.Equals(coords));
@@ -28,11 +27,11 @@ namespace Core {
 			DisplayGrid();
 		}
 
-		public int GetNbAliveNeighboor(int i, int j) {
+		public int GetNbAliveNeighboor(int x, int y) {
 			int result = 0;
-			var coordList = GetCoordsNeighboors(i, j);
+			var coordList = GetCoordsNeighboors(x, y);
 			foreach (var coord in coordList) {
-				if (TabCells[coord.x, coord.y].isAlive) {
+				if (TabCells[coord.x, coord.y].isAlive && !coord.Equals(new Coords(x, y))) {
 					result++;
 				}
 			}
@@ -41,9 +40,13 @@ namespace Core {
 
 		public List<Coords> GetCoordsNeighboors(int x, int y) {
 			var coordsList = new List<Coords>();
-			for (int i = Math.Max(0, x-1); i < Math.Min(x+1, _n); i++) {
-				for (int j = Math.Max(0, y-1); j < Math.Min(y+1, _n); j++) {
-					coordsList.Add(new Coords(x, y));
+			int xMin = Math.Max(0, x - 1);
+			int xMax = Math.Min(x + 1, _n-1);
+			int yMin = Math.Max(0, y - 1);
+			int yMax = Math.Min(y + 1, _n-1);
+			for (int i = xMin; i <= xMax; i++) {
+				for (int j = yMin; j <= yMax; j++) {
+					coordsList.Add(new Coords(i, j));
 				}
 			}
 			return coordsList;
@@ -53,8 +56,8 @@ namespace Core {
 			var coordsList = new List<Coords>();
 			for (int i = 0; i < _n; i++) {
 				for (int j = 0; j < _n; j++) {
-					if(TabCells[i, j].isAlive)
-						coordsList.Add(new Coords(i, j));
+					if(TabCells[j, i].isAlive)
+						coordsList.Add(new Coords(j, i));
 				}
 			}
 			return coordsList;
@@ -62,9 +65,9 @@ namespace Core {
 		public void DisplayGrid() {
 			string line = string.Join("", Enumerable.Repeat("+---", _n)) + "+";
 
-			for (int i = 0; i < _n; i++) {
+			for (int j = 0; j < _n; j++) {
 				Console.WriteLine(line);
-				for (int j = 0; j < _n; j++) {
+				for (int i = 0; i < _n; i++) {
 					Console.Write("| ");
 					Console.Write(TabCells[i, j].isAlive ? "X" : " ");
 					Console.Write(" ");
