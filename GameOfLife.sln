@@ -4,6 +4,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core", "Core\Core.csproj", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleGol", "ConsoleGol\ConsoleGol.csproj", "{B599C837-9E33-4AF7-A30C-4395D7F7FC04}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GraphicalGol", "GraphicalGol\GraphicalGol.csproj", "{5A46DE2A-CD8F-400D-9443-B00AFA5FB15B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +20,9 @@ Global
 		{B599C837-9E33-4AF7-A30C-4395D7F7FC04}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B599C837-9E33-4AF7-A30C-4395D7F7FC04}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B599C837-9E33-4AF7-A30C-4395D7F7FC04}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5A46DE2A-CD8F-400D-9443-B00AFA5FB15B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5A46DE2A-CD8F-400D-9443-B00AFA5FB15B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5A46DE2A-CD8F-400D-9443-B00AFA5FB15B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5A46DE2A-CD8F-400D-9443-B00AFA5FB15B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

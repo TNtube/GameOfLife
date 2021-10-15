@@ -11,7 +11,8 @@ namespace Core {
 			set => _n = value;
 		}
 		
-		Cell[,] TabCells ;
+		public readonly Cell[,] TabCells;
+		private Dictionary<string, List<Coords>> _bufferCoordList = new Dictionary<string, List<Coords>>();
 
 
 		public Grid(int nbCells, List<Coords> aliveCellsCoords) {
@@ -39,6 +40,9 @@ namespace Core {
 		}
 
 		public List<Coords> GetCoordsNeighboors(int x, int y) {
+			if (_bufferCoordList.ContainsKey($"{x}{y}")) {
+				return _bufferCoordList[$"{x}{y}"];
+			}
 			var coordsList = new List<Coords>();
 			int xMin = Math.Max(0, x - 1);
 			int xMax = Math.Min(x + 1, _n-1);
@@ -49,6 +53,7 @@ namespace Core {
 					coordsList.Add(new Coords(i, j));
 				}
 			}
+			_bufferCoordList.Add($"{x}{y}", coordsList);
 			return coordsList;
 		}
 
@@ -56,8 +61,8 @@ namespace Core {
 			var coordsList = new List<Coords>();
 			for (int i = 0; i < _n; i++) {
 				for (int j = 0; j < _n; j++) {
-					if(TabCells[j, i].isAlive)
-						coordsList.Add(new Coords(j, i));
+					if(TabCells[i, j].isAlive)
+						coordsList.Add(new Coords(i, j));
 				}
 			}
 			return coordsList;
