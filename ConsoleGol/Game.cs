@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading;
+using Core;
 
-namespace Core {
+namespace ConsoleGol {
 
 	public class Game {
 
@@ -13,8 +14,8 @@ namespace Core {
 
 		public Game(int nbCells, int nbIterations) {
 			AliveCellsCoords = new List<Coords> {
-				new(0, 2), new (1, 2), new (2, 2),
-				new (2, 1), new (1, 0)
+				new Coords(0, 2), new Coords(1, 2), new Coords(2, 2),
+				new Coords(2, 1), new Coords(1, 0)
 			};
 			n = nbCells;
 			iter = nbIterations;
